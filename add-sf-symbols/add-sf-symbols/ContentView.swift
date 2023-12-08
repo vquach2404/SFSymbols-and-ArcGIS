@@ -30,8 +30,12 @@ struct ContentView: View {
         let serviceFeatureTable = ServiceFeatureTable(url: featureServiceURL)
         // Creates a feature layer from the feature table.
         let featureLayer = FeatureLayer(featureTable: serviceFeatureTable)
+        // Creates a symbol configuration to apply to the image.
+        var config = UIImage.SymbolConfiguration(paletteColors: [.systemPurple, .systemCyan])
+        // Applies a size to the image.
+        config = config.applying(UIImage.SymbolConfiguration(font: .systemFont(ofSize: 30.0)))
         // Creates an image from an SF Symbol.
-        let image = UIImage(systemName: "figure.walk.circle")!
+        let image = UIImage(systemName: "figure.walk.circle.fill", withConfiguration: config)!
         // Creates a picture marker symbol from the image.
         let symbol = PictureMarkerSymbol(image: image)
         // Creates a renderer using the symbol and adds it to the feature layer.

@@ -20,8 +20,12 @@ private class Model: ObservableObject {
     let graphicsOverlay = GraphicsOverlay()
     
     init() {
+        // Creates a symbol configuration to apply to the image.
+        var config = UIImage.SymbolConfiguration(paletteColors: [.systemPurple, .systemCyan])
+        // Applies a size to the image.
+        config = config.applying(UIImage.SymbolConfiguration(font: .systemFont(ofSize: 30.0)))
         // Creates a UIImage from an SFSymbol.
-        let image = UIImage(systemName: "figure.walk.circle")!
+        let image = UIImage(systemName: "figure.walk.circle.fill", withConfiguration: config)!
         // Creates a picture marker symbol from the image.
         let symbol = PictureMarkerSymbol(image: image)
         // Creates a point for the graphic's location.
